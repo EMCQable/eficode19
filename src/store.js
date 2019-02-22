@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 import dataReducer from './reducers/sensordataReducer'
+import filterReducer from './reducers/filterReducer'
 
 
 const reducer = combineReducers({
-  data: dataReducer
+  data: dataReducer,
+  filters: filterReducer
 })
 
 const store = createStore(
