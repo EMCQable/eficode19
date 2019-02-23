@@ -15,7 +15,7 @@ exports.handler = (event, context, callback) => {
                 port: '443',
                 path: '/api/events',
                 headers: {
-                    "Authorization" :'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTksImVtYWlsIjoidGltby5wb2x2aW5lbkBhYWx0by5maSIsImlhdCI6MTU1MDUwMzgyN30.wCpDEtkYXFroJcyse8qjNhlFvRODXa4P0xFQrK8toRk'
+                    "Authorization": process.env.authorization
                 }
     }, (resp) => {
         let data = '';
