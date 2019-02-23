@@ -10,17 +10,22 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   LineSeries,
+  AreaSeries,
   GradientDefs,
 } from 'react-vis'
 
 const DataChart = (props) => (
   <div>
-    <XYPlot height={props.windowHeight * 0.8} width={props.windowWidth * 0.8} xType="time">
+    <XYPlot
+      height={props.windowHeight * 0.8}
+      width={props.windowWidth * 0.8}
+      xType="time"
+    >
       <GradientDefs>
-        {/*        <linearGradient id="CoolGradient" x1="0" x2="0" y1="0" y2="1">
+        <linearGradient id="CoolGradient" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0%" stopColor="red" stopOpacity={0.4} />
           <stop offset="100%" stopColor="blue" stopOpacity={0.3} />
-        </linearGradient>*/}
+        </linearGradient>
       </GradientDefs>
       <VerticalGridLines values={[0]} />
       <HorizontalGridLines />
@@ -39,8 +44,9 @@ const DataChart = (props) => (
         }} />
       {/*<AreaSeries
         color={'url(#CoolGradient)'}
-        data={props.data}
-      />*/}
+        data={filteredData(props)}
+      />
+      */}
       <LineSeries data={filteredData(props)}
         style={{ strokeWidth: '3px' }}
       />
@@ -86,7 +92,7 @@ const TransformedData = (state, sensor) => {
 const filteredData = ({ filters, sensor, data }) => {
   const startdate = filters[sensor].start
   const enddate = filters[sensor].end
-  const filteredData = data.filter(element => element.x.getDate() >= startdate.getDate()
+  const filteredData = data.filter(element => element.x.getDate() > startdate.getDate()
     && element.x.getDate() <= enddate.getDate())
   return filteredData
 }
