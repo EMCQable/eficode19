@@ -92,8 +92,8 @@ const TransformedData = (state, sensor) => {
 const filteredData = ({ filters, sensor, data }) => {
   const startdate = filters[sensor].start
   const enddate = filters[sensor].end
-  const filteredData = data.filter(element => element.x.getDate() > startdate.getDate()
-    && element.x.getDate() <= enddate.getDate())
+  const filteredData = data.filter(element => element.x > startdate
+    && element.x <= enddate)
   return filteredData
 }
 
