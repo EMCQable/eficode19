@@ -9,3 +9,5 @@ There's a simple backend for GET requests which scan the database.
 In the frontend, there's a React App with a redux store. The actual visualization is rendered with react-vis.
 
 The frontend and backend are made into docker images and run with docker-compose.
+
+The app is running at https://eficode19.herokuapp.com/

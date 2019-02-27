@@ -81,7 +81,7 @@ const Backward = ({ backward, sensor }) => () => {
 
 const TransformedData = (state, sensor) => {
   let data = []
-  state.data.Items.forEach(element => {
+  state.data.forEach(element => {
     let time = new Date(element.date)
     data.push({ x: time, y: element[sensor] })
   })
