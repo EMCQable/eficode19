@@ -1,7 +1,7 @@
 import axios from 'axios'
 //import { API } from 'aws-amplify'
 
-const baseUrl = 'https://a2nnf67mq1.execute-api.eu-west-2.amazonaws.com/prod/eficode19'
+const baseUrl = '/api/data'
 
 /*const getAll = async () => {
   const apiName = 'sensordata'

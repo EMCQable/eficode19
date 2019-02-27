@@ -1,12 +1,8 @@
+const Note = require('./models/datam')
+
 console.log('Loading function');
 
-const doc = require('dynamodb-doc');
-
-const dynamo = new doc.DynamoDB();
-
 const https = require('https');
-
-
 
 exports.handler = (event, context, callback) => {
     //console.log('Received event:', JSON.stringify(event, null, 2));
@@ -26,24 +22,13 @@ exports.handler = (event, context, callback) => {
         });
 
         // The whole response has been received. Print out the result.
-        resp.on('end', () => {
-            //console.log(JSON.parse(data));
-            dynamo.putItem({
-                TableName: 'eficode2019',
-                Item: JSON.parse(data)
-            }, done);
+        resp.on('end', async () => {
+            console.log(JSON.parse(data));
+            const note = new Note(JSON.parse(data))
+            await note.save()
         });
 
     }).on("error", (err) => {
         console.log("Error: " + err.message);
-    });
-    
-    
-    const done = (err, res) => callback(null, {
-        statusCode: err ? '400' : '200',
-        body: err ? err.message : JSON.stringify(res),
-        headers: {
-            'Content-Type': 'application/json',
-        },
     });
 };

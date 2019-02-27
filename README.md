@@ -2,8 +2,10 @@ This is a coding assignment from Eficode for their 2019 Summer job opening.
 
 ##Parts
 
-In /backends there are two backends that run in AWS Lambda. The endpoint_poller is run with a cron job (37 * * * ? * ), that is once an hour 37 minutes past. The data is put into a DynamoDB database.
+In /backends there are two backends that run in AWS Lambda. The endpoint_poller is run with set intervals once every hour.. The data is put into a MongoDB database.
 
-The http_endpoint works as a backend for the frontend in /src . The API is an AWS API Gateway API, which invokes the endpoint code.
+There's a simple backend for GET requests which scan the database.
 
 In the frontend, there's a React App with a redux store. The actual visualization is rendered with react-vis.
+
+The frontend and backend are made into docker images and run with docker-compose.
